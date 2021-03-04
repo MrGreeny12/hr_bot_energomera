@@ -52,7 +52,7 @@ keyboardPageCandidate.add(keyMainMenu, keyBackFAQ)
 keyboardPageCandidateTestTrouble = types.InlineKeyboardMarkup()
 keyExcelTrouble = types.InlineKeyboardButton('Проблемы с тестом в Excel', callback_data='excelTrouble')
 keyTestRoomTrouble = types.InlineKeyboardButton('Проблемы с тестом в Testroom', callback_data='testRoomTrouble')
-keyboardPageCandidateTestTrouble.add(keyExcelTrouble).add(keyTestRoomTrouble).add(keyMainMenu).add(keyBackFAQ)
+keyboardPageCandidateTestTrouble.add(keyExcelTrouble).add(keyTestRoomTrouble).add(keyMainMenu, keyBackFAQ)
 keyboardPageTestTrouble = types.InlineKeyboardMarkup()
 keyBackTestTrouble = types.InlineKeyboardButton('Назад', callback_data='testTrouble')
 keyboardPageTestTrouble.add(keyMainMenu, keyBackTestTrouble)
@@ -68,18 +68,19 @@ keyVacations = types.InlineKeyboardButton('Отпуска и больничны�
 keyDifferentiation = types.InlineKeyboardButton('Дифференциация персонала', callback_data='differentiation')
 keyMentoring = types.InlineKeyboardButton('Наставничество', callback_data='mentoring')
 keyStudy = types.InlineKeyboardButton('Обучение персонала', callback_data='study')
-keyRecruitment = types.InlineKeyboardButton('Подбор персонала', callback_data='recruitment')
+keyTestEmployee = types.InlineKeyboardButton('Психологическое тестирование', callback_data='testEmployee')
 keyCOVID19 = types.InlineKeyboardButton('Короновирус (COVID-19)', callback_data='covid19')
+keyReferal = types.InlineKeyboardButton('Пригласи друга на работу', callback_data='referal')
 keyBackMainMenu = types.InlineKeyboardButton(text='Назад', callback_data='kb.keyboardWelcome')
 keyboardEmployee.add(keyEvents).add(keyMoney).add(keyLabourOrganization).add(keyDMS)\
     .add(keyVacations).add(keyDifferentiation).add(keyMentoring).add(keyStudy)\
-    .add(keyRecruitment).add(keyCOVID19).add(keyBackMainMenu)
+    .add(keyTestEmployee).add(keyReferal).add(keyCOVID19).add(keyBackMainMenu)
 
 
 # клавиатура раздела о мероприятиях компании
 keyboardEvents = types.InlineKeyboardMarkup()
 keyIdea = types.InlineKeyboardButton('Предложить идею', callback_data='idea')
-keySpecialOffers = types.InlineKeyboardButton('Акции для сотрудников', callback_data='specialOffers')
+keySpecialOffers = types.InlineKeyboardButton('Акции для сотрудников (в разработке)', callback_data='specialOffers')
 keyBackEmployee = types.InlineKeyboardButton(text='Назад', callback_data='employee')
 keyboardEvents.add(keyIdea, keySpecialOffers).add(keyBackEmployee)
 keyboardPageEvents = types.InlineKeyboardMarkup()
@@ -108,7 +109,7 @@ keyboardPageMoney.add(keyMainMenu, keyBackMoney)
 keyboardLabourOrganization = types.InlineKeyboardMarkup()
 keyPassLost = types.InlineKeyboardButton('Отсутствие пропуска', callback_data='passLost')
 keyProhibitions = types.InlineKeyboardButton('Ограничения', callback_data='prohibitions')
-keySchedule = types.InlineKeyboardButton('График работы', callback_data='schedule')
+keySchedule = types.InlineKeyboardButton('График работы (в разработке)', callback_data='schedule')
 keyboardLabourOrganization.add(keyPassLost, keyProhibitions).add(keySchedule).add(keyBackEmployee)
 keyboardPageLabourOrganization = types.InlineKeyboardMarkup()
 keyBackLabourOrganization = types.InlineKeyboardButton(text='Назад', callback_data='labourOrganization')
@@ -160,39 +161,45 @@ keyboardPageMentoring.add(keyMainMenu, keyBackMentoring)
 
 # клавиатура раздела об обучении
 keyboardStudy = types.InlineKeyboardMarkup()
-keyAttestation = types.InlineKeyboardButton('Аттестация персонала', callback_data='attestation')
-keyFailureStudy = types.InlineKeyboardButton('Преподаватель не провёл обучение', callback_data='failureStudy')
-keyTrainig = types.InlineKeyboardButton('Как мне повысить квалификацию?', callback_data='training')
-keyRemoteStudyPortal = types.InlineKeyboardButton('Можно ли попасть на портал обучения дистанционно?', callback_data='remoteStudyPortal')
-keyAbsenteeism = types.InlineKeyboardButton('Я не могу пройти обучение по плану - что делать?', callback_data='absenteeism')
-keyOrderQualificationCommission = types.InlineKeyboardButton('Как будет проходить квалификацонная комиссия?', callback_data='orderQualificationCommission')
-keyPreQualificationCommission = types.InlineKeyboardButton('Что готовить на квалификационную комиссию?', callback_data='preQualificationCommission')
-keyFailureQualificationCommission = types.InlineKeyboardButton('Что делать, если просрал всё перед комиссией?', callback_data='failureQualificationCommission')
-keyboardStudy.add(keyAttestation).add(keyFailureStudy).add(keyTrainig).add(keyRemoteStudyPortal)\
-    .add(keyAbsenteeism).add(keyOrderQualificationCommission).add(keyPreQualificationCommission)\
-    .add(keyFailureQualificationCommission).add(keyBackEmployee)
+keyFailureStudy = types.InlineKeyboardButton('Обучение не состоялось', callback_data='failureStudy')
+keyTrainig = types.InlineKeyboardButton('Повысить квалификацию', callback_data='training')
+keyRemoteStudyPortal = types.InlineKeyboardButton('Обучение из дома', callback_data='remoteStudyPortal')
+keyAbsenteeism = types.InlineKeyboardButton('Не могу присутствовать', callback_data='absenteeism')
+keyQualificationCommission = types.InlineKeyboardButton('Как будет проходить квалификацонная комиссия?',
+                                                        callback_data='QualificationCommission')
+keyboardStudy.add(keyFailureStudy).add(keyTrainig).add(keyRemoteStudyPortal)\
+    .add(keyAbsenteeism).add(keyQualificationCommission).add(keyBackEmployee)
 keyboardPageStudy = types.InlineKeyboardMarkup()
 keyBackStudy = types.InlineKeyboardButton(text='Назад', callback_data='study')
 keyboardPageStudy.add(keyMainMenu, keyBackStudy)
 
 
-# клавиатура раздела о подборе персонала
-keyboardRecruitment = types.InlineKeyboardMarkup()
-keyAboutReferal = types.InlineKeyboardButton('Подробно о реферальной программе', callback_data='aboutReferal')
-keyTestResultEmployee = types.InlineKeyboardButton('Как узнать результаты тестирования?', callback_data='testResultEmployee')
-keyboardRecruitment.add(keyAboutReferal).add(keyTestResultEmployee).add(keyBackEmployee)
-keyboardPageRecruitment = types.InlineKeyboardMarkup()
-keyBackRecruitment = types.InlineKeyboardButton(text='Назад', callback_data='recruitment')
-keyboardPageRecruitment.add(keyMainMenu, keyBackRecruitment)
+# клавиатура возврата на страницу обучения
+keyboardQualificationCommission = types.InlineKeyboardMarkup()
+keyDocListQualification = types.InlineKeyboardButton('Обучение из дома', callback_data='docListQualification')
+keyLostQualificationCommission = types.InlineKeyboardButton('Не могу присутствовать',
+                                                            callback_data='lostQualificationCommission')
+keyboardQualificationCommission.add(keyDocListQualification).add(keyLostQualificationCommission).add(keyBackStudy)
+keyboardBackQualificationCommission = types.InlineKeyboardMarkup()
+keyBackQualificationCommission = types.InlineKeyboardButton('Назад', callback_data='QualificationCommission')
+keyboardBackQualificationCommission.add(keyMainMenu, keyBackQualificationCommission)
+
+
+# клавиатура возврата на страницу сотрудников
+keyboardBackEmployee = types.InlineKeyboardMarkup()
+keyboardBackEmployee.add(keyMainMenu, keyBackEmployee)
 
 
 # клавиатура раздела о COVID-19
 keyboardCovid19 = types.InlineKeyboardMarkup()
-keyRecommendation = types.InlineKeyboardButton('Рекомендации от правительства Ставропольского края', callback_data='recommendation')
-keyActualDoc = types.InlineKeyboardButton('Актуальные документы', callback_data='actualDoc')
-keyRemoteStatement = types.InlineKeyboardButton('Заявление на удалёнку', callback_data='remoteStatement')
-keyboardCovid19.add(keyRecommendation).add(keyActualDoc).add(keyRemoteStatement)\
-    .add(keyBackEmployee)
+keyRecommendation = types.InlineKeyboardButton('Рекомендации от правительства Ставропольского края',
+                                               url='https://www.stavregion.ru/podderzhka-nko/novosti-nko/rekomendacii-'
+                                                   'po-profilaktike-novoj-koronovirusnoj-infekcii-covid/',
+                                               callback_data='recommendation')
+keyActualDoc = types.InlineKeyboardButton('Актуальные документы',
+                                          url='http://docs.cntd.ru/document/570711319',
+                                          callback_data='actualDoc')
+keyboardCovid19.add(keyRecommendation).add(keyActualDoc).add(keyBackEmployee)
 keyboardPageCovid19 = types.InlineKeyboardMarkup()
 keyBackCovid19 = types.InlineKeyboardButton(text='Назад', callback_data='covid19')
 keyboardPageCovid19.add(keyMainMenu, keyBackCovid19)

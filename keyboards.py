@@ -34,7 +34,7 @@ keyboardFAQ.add(keySendResume).add(keySteps).add(keyTestTrouble).add(keyTestResu
 keyboardSocialNetworks = types.InlineKeyboardMarkup()
 keyVK = types.InlineKeyboardButton('ВКонтакте', url='http://vk.com/concern_energomera', callback_data='vk')
 keyFacebook = types.InlineKeyboardButton('Facebook', url='https://www.facebook.com/energomera.ru', callback_data='facebook')
-keyInstagram = types.InlineKeyboardButton('Instagram', url='https://instagram.com/energomera_careers?igshid=eynr8657nskp', callback_data='instagram')
+keyInstagram = types.InlineKeyboardButton('Instagram', url='https://instagram.com/energomera_careers', callback_data='instagram')
 keyHeadHunter = types.InlineKeyboardButton('Head Hunter', url='https://stavropol.hh.ru/employer/24946', callback_data='headHunter')
 keyMainSite = types.InlineKeyboardButton('Официальный сайт Компании', url='http://www.energomera.com', callback_data='mainSite')
 keyboardSocialNetworks.add(keyVK).add(keyFacebook).add(keyInstagram).add(keyHeadHunter).add(keyMainSite)\
@@ -118,7 +118,7 @@ keyboardPageLabourOrganization.add(keyMainMenu, keyBackLabourOrganization)
 
 # клавиатура раздела о ДМС (добровольное медицинское страхование)
 keyboardDMS = types.InlineKeyboardMarkup()
-keyHowUseDMS = types.InlineKeyboardButton('Потратить средства ДМС', callback_data='howUseDMS')
+keyHowUseDMS = types.InlineKeyboardButton('Потратить ДМС', callback_data='howUseDMS')
 keyFamilyDMS = types.InlineKeyboardButton('Перевод средств ДМС', callback_data='familyDMS')
 keyboardDMS.add(keyHowUseDMS, keyFamilyDMS).add(keyBackEmployee)
 keyboardPageDMS = types.InlineKeyboardMarkup()

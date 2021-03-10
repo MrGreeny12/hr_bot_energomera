@@ -1,7 +1,7 @@
 import flask
 from telebot import types
 from config import *
-import bot
+from .bot import bot
 import os
 
 server = flask.Flask(__name__)

@@ -10,48 +10,49 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def process_start_command(message):
     bot.send_message(message.chat.id,
-                     'Кто\n'
-                     'Ты\n'
-                     'По масти?\n'
-                     '♠️♣️\n'
+                     'Для начала давай познакомимся!🙋🏼‍♂️\n'
                      '\n'
-                     'так и тестим🤷🏼‍♂️',
+                     'Кто ты? \n',
                      reply_markup=kb.keyboardWelcome)
 
 
 @bot.message_handler(commands=['help'])
 def process_help_command(message):
     bot.send_message(message.chat.id,
-                     'Здесь по идее будет инфа о полезностях бота\n'
+                     'Команды:\n'
                      '\n'
-                     'Пока тут только по командам\n'
-                     '/start - запуск бота\n'
-                     '/authors - список авторов\n'
-                     '/feedback - отписать по багам\n')
+                     '/start - главное меню 📲\n'
+                     '\n'
+                     '/authors - список авторов 🤹🏼‍♂️\n'
+                     '\n'
+                     '/feedback - баги, идеи, мысли сюда 🩺\n')
 
 
 @bot.message_handler(commands=['authors'])
 def process_help_command(message):
     bot.send_message(message.chat.id,
-                     'Все эти прекрасные люди тут скоро появятся')
+                     '@ivakhnenkovd - разработка, логика, текст 💻\n'
+                     '\n'
+                     '@GottliebPaw - логика, текст, лого 🖥 \n'
+                     '\n'
+                     'Саша Доценко - лого 🎨 \n'
+                     '\n'
+                     'Инна Попова, Алина Шапошникова - текст 🧾 \n')
 
 
 @bot.message_handler(commands=['feedback'])
 def process_help_command(message):
     bot.send_message(message.chat.id,
-                     'Все свои чудесные мысли, баги, идеи и просто доброе слово можно написать сюда\n'
-                     '@ivakhnenkovd')
+                     'Все свои чудесные мысли, баги, идеи и просто доброе слово можно написать сюда 🤓\n'
+                     '@ivakhnenkovd \n')
 
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == 'kb.keyboardWelcome':
-        bot.edit_message_text('Кто\n'
-                              'Ты\n'
-                              'По масти?\n'
-                              '♠️♣️\n'
+        bot.edit_message_text('Для начала давай познакомимся!🙋🏼‍♂️\n'
                               '\n'
-                              'так и тестим🤷🏼‍♂️',
+                              'Кто ты?\n',
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardWelcome)
@@ -129,7 +130,7 @@ def callback_inline(call):
                               reply_markup=kb.keyboardPageTestTrouble)
     elif call.data == 'testRoomTrouble':
         bot.edit_message_text('1) Чтобы пройти тестирование на сайте, Вам необходимо зарегистрироваться, заполнив все '
-                              'поля анкеты.\n '
+                              'поля анкеты.\n'
                               '2) Войти на сайт, используя свой логин и пароль.\n'
                               '3) Выбрать нужный тест из списка / повторно перейти по ссылке на тест из письма от '
                               'менеджера.\n '
@@ -201,7 +202,7 @@ def callback_inline(call):
                               call.message.message_id,
                               reply_markup=kb.keyboardPageEvents)
     elif call.data == 'specialOffers':
-        bot.edit_message_text('У нас тот свой чат...🤖\n',
+        bot.edit_message_text('У нас тут свой чат...🤖\n',
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardPageEvents)
@@ -373,7 +374,7 @@ def callback_inline(call):
                               'Сдай квиток в отдел кадров - тебе полагается 2 дня отгула, которые ты '
                               'можешь взять в любой день года 🗓\n'
                               '\n'
-                              'Только не забудь предупредить, что ты берёшь отгул!\n',
+                              'Только не забудь предупредить руководителя, что ты берёшь отгул!\n',
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardPageVacations)
@@ -562,6 +563,12 @@ def callback_inline(call):
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardBackEmployee)
+
+
+@bot.message_handler(content_types=['text'])
+def send_text(message):
+    if message.text:
+        bot.send_message(message.chat.id, 'Убери руки от клавиатуры и медленно положи их на пол!🔫')
 
 
 if __name__ == '__main__':

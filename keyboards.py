@@ -176,7 +176,7 @@ keyboardPageStudy.add(keyMainMenu, keyBackStudy)
 
 # клавиатура возврата на страницу обучения
 keyboardQualificationCommission = types.InlineKeyboardMarkup()
-keyDocListQualification = types.InlineKeyboardButton('Обучение из дома', callback_data='docListQualification')
+keyDocListQualification = types.InlineKeyboardButton('Что подготовить?', callback_data='docListQualification')
 keyLostQualificationCommission = types.InlineKeyboardButton('Не могу присутствовать',
                                                             callback_data='lostQualificationCommission')
 keyboardQualificationCommission.add(keyDocListQualification).add(keyLostQualificationCommission).add(keyBackStudy)

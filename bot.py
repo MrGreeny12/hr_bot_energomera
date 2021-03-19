@@ -569,7 +569,7 @@ def callback_inline(call):
 @bot.message_handler(content_types=['text'])
 def send_text(message):
     if message.text:
-        bot.send_message(message.chat.id, 'Убери руки от клавиатуры и медленно положи их на пол!🔫')
+        bot.send_message(message.chat.id, 'Чтобы запустить бот используй команду - /start   ')
 
 
 if __name__ == '__main__':

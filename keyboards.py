@@ -3,59 +3,11 @@ from telebot import types
 
 # главная страница
 keyboardWelcome = types.InlineKeyboardMarkup()
-keyEmployee = types.InlineKeyboardButton('Сотрудник', callback_data='employee')
-keyCandidate = types.InlineKeyboardButton('Кандидат', callback_data='candidate')
-keyboardWelcome.add(keyEmployee, keyCandidate)
-
-
-# клавиатура для кандидата
-keyboardCandidate = types.InlineKeyboardMarkup()
-keyFaq = types.InlineKeyboardButton('Популярные вопросы', callback_data='faq')
-keySocialNetworks = types.InlineKeyboardButton('Наши контакты', callback_data='socialNetworks')
-keyBackMainMenu = types.InlineKeyboardButton(text='Назад', callback_data='kb.keyboardWelcome')
-keyboardCandidate.add(keyFaq, keySocialNetworks).add(keyBackMainMenu)
-
-
-# клавиатура раздела FAQ
-keyboardFAQ = types.InlineKeyboardMarkup()
-keySteps = types.InlineKeyboardButton('Этапы подбора персонала', callback_data='steps')
-keyTestResultCandidate = types.InlineKeyboardButton('Узнать результаты тестирования', callback_data='testResultCandidate')
-keyFeedback = types.InlineKeyboardButton('Оставить отзыв', callback_data='feedback')
-keyTestTrouble = types.InlineKeyboardButton('Проблемы с тестированием', callback_data='testTrouble')
-keyDocList = types.InlineKeyboardButton('Документы для приёма на работу', callback_data='docList')
-keyStudentsPractice = types.InlineKeyboardButton('Как попасть на практику', callback_data='studentsPractice')
-keySendResume = types.InlineKeyboardButton('Отправить резюме', callback_data='sendResume')
-keyBackCandidate = types.InlineKeyboardButton(text='Назад', callback_data='candidate')
-keyboardFAQ.add(keySendResume).add(keySteps).add(keyTestTrouble).add(keyTestResultCandidate)\
-    .add(keyStudentsPractice).add(keyDocList).add(keyFeedback).add(keyBackCandidate)
-
-
-# клавиатура раздела Социальные сети
-keyboardSocialNetworks = types.InlineKeyboardMarkup()
-keyVK = types.InlineKeyboardButton('ВКонтакте', url='http://vk.com/concern_energomera', callback_data='vk')
-keyFacebook = types.InlineKeyboardButton('Facebook', url='https://www.facebook.com/energomera.ru', callback_data='facebook')
-keyInstagram = types.InlineKeyboardButton('Instagram', url='https://instagram.com/energomera_careers', callback_data='instagram')
-keyHeadHunter = types.InlineKeyboardButton('Head Hunter', url='https://stavropol.hh.ru/employer/24946', callback_data='headHunter')
-keyMainSite = types.InlineKeyboardButton('Официальный сайт Компании', url='http://www.energomera.com', callback_data='mainSite')
-keyboardSocialNetworks.add(keyVK).add(keyFacebook).add(keyInstagram).add(keyHeadHunter).add(keyMainSite)\
-    .add(keyBackCandidate)
-
-
-# клавиатура для всех страниц с информацией
-keyboardPageCandidate = types.InlineKeyboardMarkup()
+keyEmployee = types.InlineKeyboardButton('База знаний', callback_data='employee')
+keyItSupport = types.InlineKeyboardButton('Помощь от службы ИТ', url='t.me/energomera_bot', callback_data='itSupport')
+keyEnergomeraFeed = types.InlineKeyboardButton('Общение для сотрудников Энергомеры', url='', callback_data='energomeraFeed')
+keyboardWelcome.add(keyEmployee).add(keyItSupport).add(keyEnergomeraFeed)
 keyMainMenu = types.InlineKeyboardButton('В начало', callback_data='kb.keyboardWelcome')
-keyBackFAQ = types.InlineKeyboardButton('Назад', callback_data='faq')
-keyboardPageCandidate.add(keyMainMenu, keyBackFAQ)
-
-
-# клавиатура для всех странице с информации о проблемах с тестированием
-keyboardPageCandidateTestTrouble = types.InlineKeyboardMarkup()
-keyExcelTrouble = types.InlineKeyboardButton('Проблемы с тестом в Excel', callback_data='excelTrouble')
-keyTestRoomTrouble = types.InlineKeyboardButton('Проблемы с тестом в Testroom', callback_data='testRoomTrouble')
-keyboardPageCandidateTestTrouble.add(keyExcelTrouble).add(keyTestRoomTrouble).add(keyMainMenu, keyBackFAQ)
-keyboardPageTestTrouble = types.InlineKeyboardMarkup()
-keyBackTestTrouble = types.InlineKeyboardButton('Назад', callback_data='testTrouble')
-keyboardPageTestTrouble.add(keyMainMenu, keyBackTestTrouble)
 
 
 # клавиатура для страницы сотрудника
@@ -80,7 +32,7 @@ keyboardEmployee.add(keyEvents).add(keyMoney).add(keyLabourOrganization).add(key
 # клавиатура раздела о мероприятиях компании
 keyboardEvents = types.InlineKeyboardMarkup()
 keyIdea = types.InlineKeyboardButton('Предложить идею', callback_data='idea')
-keySpecialOffers = types.InlineKeyboardButton('Акции для сотрудников (в разработке)', callback_data='specialOffers')
+keySpecialOffers = types.InlineKeyboardButton('Акции для сотрудников', callback_data='specialOffers')
 keyBackEmployee = types.InlineKeyboardButton(text='Назад', callback_data='employee')
 keyboardEvents.add(keyIdea, keySpecialOffers).add(keyBackEmployee)
 keyboardPageEvents = types.InlineKeyboardMarkup()
@@ -109,7 +61,7 @@ keyboardPageMoney.add(keyMainMenu, keyBackMoney)
 keyboardLabourOrganization = types.InlineKeyboardMarkup()
 keyPassLost = types.InlineKeyboardButton('Отсутствие пропуска', callback_data='passLost')
 keyProhibitions = types.InlineKeyboardButton('Ограничения', callback_data='prohibitions')
-keySchedule = types.InlineKeyboardButton('График работы (в разработке)', callback_data='schedule')
+keySchedule = types.InlineKeyboardButton('График работы', callback_data='schedule')
 keyboardLabourOrganization.add(keyPassLost, keyProhibitions).add(keySchedule).add(keyBackEmployee)
 keyboardPageLabourOrganization = types.InlineKeyboardMarkup()
 keyBackLabourOrganization = types.InlineKeyboardButton(text='Назад', callback_data='labourOrganization')

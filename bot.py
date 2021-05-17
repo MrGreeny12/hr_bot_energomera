@@ -10,22 +10,12 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def process_start_command(message):
     bot.send_message(message.chat.id,
-                     'Для начала давай познакомимся!🙋🏼‍♂️\n'
-                     '\n'
-                     'Кто ты? \n',
+                     'Привет!🙋🏼‍♂️\n'
+                     'Что тебя интересует?',
                      reply_markup=kb.keyboardWelcome)
 
 
-@bot.message_handler(commands=['help'])
-def process_help_command(message):
-    bot.send_message(message.chat.id,
-                     'Команды:\n'
-                     '\n'
-                     '/start - главное меню 📲\n'
-                     '\n'
-                     '/authors - список авторов 🤹🏼‍♂️\n'
-                     '\n'
-                     '/feedback - баги, идеи, мысли сюда 🩺\n')
+@bot.message_handler()
 
 
 @bot.message_handler(commands=['authors'])
@@ -40,19 +30,11 @@ def process_help_command(message):
                      'Инна Попова, Алина Шапошникова - текст 🧾 \n')
 
 
-@bot.message_handler(commands=['feedback'])
-def process_help_command(message):
-    bot.send_message(message.chat.id,
-                     'Все свои чудесные мысли, баги, идеи и просто доброе слово можно написать сюда 🤓\n'
-                     '@ivakhnenkovd \n')
-
-
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == 'kb.keyboardWelcome':
-        bot.edit_message_text('Для начала давай познакомимся!🙋🏼‍♂️\n'
-                              '\n'
-                              'Кто ты?\n',
+        bot.edit_message_text('Привет!🙋🏼‍♂️\n'
+                              'Что тебя интересует?',
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardWelcome)
@@ -61,132 +43,9 @@ def callback_inline(call):
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardEmployee)
-    elif call.data == 'candidate':
-        bot.edit_message_text('Всё о практике и трудоустройстве 👨🏼‍🔬\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardCandidate)
-    elif call.data == 'faq':
-        bot.edit_message_text('Чем мы можем помочь 🆘\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardFAQ)
-    elif call.data == 'socialNetworks':
-        bot.edit_message_text('Мы на связи в ⬇️\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardSocialNetworks)
-    elif call.data == 'steps':
-        bot.edit_message_text('Все кандидаты проходят следующие этапы 📌\n'
-                              '\n'
-                              '1. Заполнение анкеты\n'
-                              '2. Собеседование с HR-ом\n'
-                              '3. Собеседование с руководителем\n'
-                              '4. Оценочные мероприятия\n'
-                              '5. Job-offer\n'
-                              '\n'
-                              'И ты в сильной команде! 🎉\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageCandidate)
-    elif call.data == 'testResultCandidate':
-        bot.edit_message_text('Для получения обратной связи по результатам тестирования необходимо обратиться к '
-                              'менеджеру по оценке персонала с запросом. 📝\n '
-                              '\n'
-                              'На почту по адресу - resume@energomera.ru  направить сообщение с запросом  и указать '
-                              'свои контактные данные.\n '
-                              '\n'
-                              'В течение 2-3 рабочих дней с Вами свяжутся и назначат дату и время консультации 🙋🏼‍♀️',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageCandidate)
-    elif call.data == 'feedback':
-        bot.edit_message_text('Мы очень хотим стать лучше. Если есть какие-то замечания, идеи или предложения, '
-                              'мы будем очень рады обратной связи 👩🏼‍💻\n'
-                              '\n'
-                              '✉️hr-feedback@energomera.ru\n'
-                              '\n'
-                              'Вы помогаете нам стать лучше, спасибо! 🤗\n'
-                              '\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageCandidate)
-    elif call.data == 'testTrouble':
-        bot.edit_message_text('Сейчас поможем 👩🏼‍💻\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageCandidateTestTrouble)
-    elif call.data == 'excelTrouble':
-        bot.edit_message_text('1) Внимательно ознакомьтесь с инструкцией в шапке теста ⬆️\n'
-                              '2) А также с краткой инструкцией справа от вопроса. ➡️\n'
-                              '3) В конце каждого теста есть небольшая подсказка. ⬇️\n'
-                              '4) Варианты ответа необходимо вводить в отведенные для этого ячейки. ✅\n'
-                              '\n'
-                              'Если у Вас ещё остались вопросы, Вы можете позвонить или написать нам\n'
-                              '✉️ resume@energomera.ru\n'
-                              '📱 +7(8652)-33-50-11',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageTestTrouble)
-    elif call.data == 'testRoomTrouble':
-        bot.edit_message_text('1) Чтобы пройти тестирование на сайте, Вам необходимо зарегистрироваться, заполнив все '
-                              'поля анкеты.\n'
-                              '2) Войти на сайт, используя свой логин и пароль.\n'
-                              '3) Выбрать нужный тест из списка / повторно перейти по ссылке на тест из письма от '
-                              'менеджера.\n '
-                              '\n'
-                              'Не получается зарегистрироваться или не открывается тест? Попробуйте использовать '
-                              'другой браузер.\n '
-                              '\n'
-                              'Если у вас ещё остались вопросы, вы можете позвонить или написать нам:\n'
-                              '✉️ resume@energomera.ru\n'
-                              '📱+7(8652)-33-50-11',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageTestTrouble)
-    elif call.data == 'docList':
-        bot.edit_message_text('Документы для трудоустройства 🗃\n'
-                              '\n'
-                              '1. Трудовая книжка\n'
-                              '2. Фотография 3х4\n'
-                              '3. Реквизиты зарплатной карты\n'
-                              '4. Копии документов:\n'
-                              '- Паспорт\n'
-                              '- СНИЛС\n'
-                              '- ИНН\n'
-                              '- Документ об образовании\n'
-                              '- Военный билет\n'
-                              '- Свидетельство о браке\n'
-                              '- Свидетельство о рождении детей\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageCandidate)
-    elif call.data == 'studentsPractice':
-        bot.edit_message_text('Отправь запрос о желании попасть к нам на практику по адресу\n'
-                              '\n'
-                              '✉️ larskyev@energomera.ru\n'
-                              '\n'
-                              'Не забудь указать⬇️\n'
-                              '- Твой ВУЗ\n'
-                              '- Твоя специальность\n'
-                              '- Твой курс\n'
-                              '- Очник/заочник\n'
-                              '- Сроки практики\n'
-                              '\n'
-                              'Ждём тебя к нам!\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageCandidate)
-    elif call.data == 'sendResume':
-        bot.edit_message_text('Отправить своё резюме на почту\n'
-                              '✉️ resume@energomera.ru\n'
-                              '\n'
-                              'Посмотреть вакансии компании\n'
-                              '🔔 http://energomera.com/career \n'
-                              '\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageCandidate)
+    elif call.data == 'energomeraFeed':
+        bot.answer_callback_query(text='Мы работаем над этим 👨🏻‍🏭',
+                                  callback_query_id=call.id)
     elif call.data == 'events':
         bot.edit_message_text('Акции, скидки, предложения от вас и нас 💎\n',
                               call.message.chat.id,
@@ -202,10 +61,8 @@ def callback_inline(call):
                               call.message.message_id,
                               reply_markup=kb.keyboardPageEvents)
     elif call.data == 'specialOffers':
-        bot.edit_message_text('У нас тут свой чат...🤖\n',
-                              call.message.chat.id,
-                              call.message.message_id,
-                              reply_markup=kb.keyboardPageEvents)
+        bot.answer_callback_query(text='Мы работаем над этим 👨🏻‍🏭',
+                                  callback_query_id=call.id)
     elif call.data == 'money':
         bot.edit_message_text('То, что мы стесняемся спросить 🙈\n',
                               call.message.chat.id,
@@ -310,11 +167,9 @@ def callback_inline(call):
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardPageLabourOrganization)
-    # elif call.data == 'schedule':
-    #     bot.edit_message_text('Можно ли приходить в 10:00 на работу? (нет)',
-    #                           call.message.chat.id,
-    #                           call.message.message_id,
-    #                           reply_markup=kb.keyboardPageLabourOrganization)
+    elif call.data == 'schedule':
+        bot.answer_callback_query(text='Мы работаем над этим 👨🏻‍🏭',
+                                  callback_query_id=call.id)
     elif call.data == 'dms':
         bot.edit_message_text('Категории А и В+ ежегодно получают средства ДМС для оплаты своего '
                               'лечения 👩🏼‍⚕️ и отдыха 🌴\n',

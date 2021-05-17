@@ -43,9 +43,6 @@ def callback_inline(call):
                               call.message.chat.id,
                               call.message.message_id,
                               reply_markup=kb.keyboardEmployee)
-    elif call.data == 'energomeraFeed':
-        bot.answer_callback_query(text='Мы работаем над этим 👨🏻‍🏭',
-                                  callback_query_id=call.id)
     elif call.data == 'events':
         bot.edit_message_text('Акции, скидки, предложения от вас и нас 💎\n',
                               call.message.chat.id,

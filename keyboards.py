@@ -5,10 +5,10 @@ from telebot import types
 keyboardWelcome = types.InlineKeyboardMarkup()
 keyEmployee = types.InlineKeyboardButton('База знаний', callback_data='employee')
 keyItSupport = types.InlineKeyboardButton('Помощь от службы ИТ', url='t.me/energomera_bot', callback_data='itSupport')
-keyEnergomeraFeed = types.InlineKeyboardButton('Общение для сотрудников Энергомеры',
-                                               url='https://t.me/joinchat/FxQYWloJ6a4wMjVi',
-                                               callback_data='energomeraFeed')
-keyboardWelcome.add(keyEmployee).add(keyItSupport).add(keyEnergomeraFeed)
+# keyEnergomeraFeed = types.InlineKeyboardButton('Общение для сотрудников Энергомеры',
+#                                                url='https://t.me/joinchat/FxQYWloJ6a4wMjVi',
+#                                                callback_data='energomeraFeed')
+keyboardWelcome.add(keyEmployee).add(keyItSupport)
 keyMainMenu = types.InlineKeyboardButton('В начало', callback_data='kb.keyboardWelcome')
 
 
